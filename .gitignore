@@ -13,3 +13,5 @@ client/media/cache
 client/media/images/hubs
 client/media/images/users
 
+# Built files - uncomment to prevent these being committed
+# client/media/custom/build/pkg
