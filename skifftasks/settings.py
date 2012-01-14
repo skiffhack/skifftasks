@@ -151,7 +151,7 @@ BROWSERID_CREATE_USER = True
 
 THUMBNAIL_DUMMY = True
 INTERNAL_IPS = ('127.0.0.1',)
-
+ADMIN_MEDIA_PREFIX
 EXPOSED_SETTINGS = ("TASK_ESTIMATE_MAX", "TASK_LIMIT", "CLAIMED_LIMIT", "USERS_CAN_CREATE_HUBS", "DONE_TIME_LIMIT", "CLAIMED_TIME_LIMIT", "AUTOVERIFY_TASKS_DONE_BY_OWNER")
 
 DEBUG = True
@@ -163,3 +163,39 @@ handler = logging.StreamHandler()
 formatter = logging.Formatter("[%(levelname)s] %(name)s: %(message)s")
 handler.setFormatter(formatter)
 logger.addHandler(handler)
+
+# From tasket's local_settings
+# How many tasks a hub can have - for the Notepad app, use -1
+TASK_LIMIT = 10
+
+# How many tasks a user can claim - for the Notepad app, use -1
+CLAIMED_LIMIT = 5
+
+# Maximum task estimate
+TASK_ESTIMATE_MAX = 14400
+
+# Time limit on completing a task
+CLAIMED_TIME_LIMIT = 72
+DONE_TIME_LIMIT = 72
+
+# Whether or not normal users can create hubs (admins can always create them)
+USERS_CAN_CREATE_HUBS = True
+
+# If a task is set to state "done" by its owner, then automatically verify it (see js/models/task.js)
+AUTOVERIFY_TASKS_DONE_BY_OWNER = True
+
+# Email messages from
+DEFAULT_FROM_EMAIL = "Tasket Robot <tasket-robot@example.com>"
+
+# Email routing
+# EMAIL_PORT = 25
+# EMAIL_HOST = "localhost"
+
+# Turn CORS on or off (default: False)
+# CROSS_DOMAIN = False
+
+# All top-level pages that should be made accessible
+INDEX_PATHS = ["tank.html", "notepad.html",]
+
+# Uncomment the next line to change the default index files from tank.html to notepad.html
+# DEFAULT_INDEX_FILE = "notepad.html"
