@@ -28,7 +28,7 @@ def browserid_verify(request):
                 'error' : "Unauthorized",
                 'status' : 401
                 }
-            ), status_code=401)
+            ), status=401)
 
         
         
