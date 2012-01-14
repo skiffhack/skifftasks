@@ -1,3 +1,3 @@
-[submodule "tasket"]
-	path = tasket
-	url = git@github.com:dharmafly/tasket.git
+[submodule "skifftasks/tasket"]
+	path = skifftasks/tasket
+	url = git@github.com:skiffhack/tasket
