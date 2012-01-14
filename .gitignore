@@ -13,5 +13,3 @@ client/media/cache
 client/media/images/hubs
 client/media/images/users
 
-# Built files
-client/media/custom/build/pkg
