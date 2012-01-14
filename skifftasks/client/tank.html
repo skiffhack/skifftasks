@@ -19,6 +19,7 @@
     <script>document.documentElement.className += " js";</script>
     <link rel="stylesheet" href="/media/tank/css/global.css?v0.1.0">
     <link rel="stylesheet" href="/media/custom/css/global.css?v0.1.0">
+    <script src="https://browserid.org/include.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -32,8 +33,11 @@
                     <li><a href="#/faq/" title="FAQ">FAQ</a></li>
                     <li><a href="#/sign-up/" title="Sign up for an account">Sign up</a></li>
                     <li class="login">
-                        <a href="#/login/" title="Login">Login</a>
-                        <form action="/logout/" method="post">
+                        <a id="browserid" href="#" title="Login">Login</a>
+                        <form method="POST" action="/browserid/verify/">
+                          <input type="hidden" name="assertion" id="id_assertion">
+                        </form>
+                        <form id="logout" action="/logout/" method="post">
                             <button title="Logout" class="link" type="submit">Logout</button>
                         </form>
                     </li>

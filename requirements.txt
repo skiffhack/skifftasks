@@ -6,3 +6,5 @@ django-sentry==1.8.5
 south==0.7.3
 gunicorn==0.12.2
 psycopg2==2.4.4
+git+https://github.com/mozilla/django-browserid.git
+httplib2==0.6

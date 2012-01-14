@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os, sys, urlparse
+from django.conf import global_settings
 
 PROJECT_PATH = os.path.split(__file__)[0]
 ROOT_PATH = PROJECT_PATH
@@ -19,6 +20,10 @@ TIME_ZONE = 'Europe/London'
 LANGUAGE_CODE = 'en-gb'
 
 SITE_ID = 1
+
+SITE_URL = 'http://127.0.0.1:8000'
+
+LOGIN_REDIRECT_URL = '/'
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -40,6 +45,7 @@ STATIC_URL = '/media/'
 
 STATICFILES_DIRS = (
     os.path.join(PROJECT_PATH, 'tasket', 'client', 'media'),
+    os.path.join(PROJECT_PATH, 'client', 'media'),
 )
 
 # Absolute path to the directory that holds media.
@@ -85,6 +91,13 @@ TEMPLATE_DIRS = (
     PROJECT_PATH + '/templates',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+    'django.core.context_processors.request',
+    'django.core.context_processors.static',
+    'django_browserid.context_processors.browserid_form',
+    'django.core.context_processors.static',
+)
+
 INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -103,7 +116,8 @@ INSTALLED_APPS = [
     'sentry',
     'sentry.client',
     'south',
-    'gunicorn'
+    'gunicorn',
+    'django_browserid',  # Load after auth to monkey-patch it.
 ]
 
 DEFAULT_TYPE = (
@@ -128,6 +142,10 @@ CORS_PATHS = (
     ('/register/', DEFAULT_TYPE , DEFAULT_HEADERS),
 )
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'django_browserid.auth.BrowserIDBackend',
+)
 
 THUMBNAIL_DUMMY = True
 INTERNAL_IPS = ('127.0.0.1',)
