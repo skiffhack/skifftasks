@@ -147,6 +147,8 @@ AUTHENTICATION_BACKENDS = (
     'django_browserid.auth.BrowserIDBackend',
 )
 
+BROWSERID_CREATE_USER = True
+
 THUMBNAIL_DUMMY = True
 INTERNAL_IPS = ('127.0.0.1',)
 
